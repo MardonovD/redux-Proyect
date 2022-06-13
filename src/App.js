@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { compose } from "redux";
 
 function App() {
+  const [state, setState] = useState("");
+  useEffect(() => {
+    setState(natija);
+  }, [state]);
+  const kup = (num) => {
+    return num * 2;
+  };
+  const ayir = (num) => {
+    return num - 2;
+  };
+  const qush = (num) => {
+    return num + 2;
+  };
+  const mixFunc = compose(qush, ayir, kup);
+  const natija = mixFunc(30);
+  console.log(natija);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Doston</h1>
+      <h1>Natija:{state}</h1>
     </div>
   );
 }
